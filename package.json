@@ -1,0 +1,44 @@
+{
+  "name": "tinder-bingo",
+  "version": "1.0.0",
+  "description": "A Tinder drinking game",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack --config webpack.dev.js",
+    "watch": "webpack -w --config webpack.dev.js",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "David Mente",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.9.5",
+    "@types/chrome": "^0.0.60",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-redux": "^7.1.7",
+    "babel-jest": "^25.3.0",
+    "bulma": "^0.8.1",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "jest": "^25.3.0",
+    "node-sass": "^4.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "ts-loader": "^4.0.1",
+    "typescript": "^3.8.0",
+    "webext-redux": "^2.1.6",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@babel/preset-typescript": "^7.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-highlight-words": "^0.16.0",
+    "save-dev": "0.0.1-security"
+  }
+}

@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+
+  .options-container {
+    background: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
+    color: white;
+    padding: 10px;
+    min-width: 500px;
+
+    .options-header {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    input {
+      width: 200px;
+      padding: 5px;
+    }
+
+    .player-button {
+      cursor: pointer;
+      display: inline-block;
+      margin: 5px;
+      color: white;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .player-name {
+      display: inline-block;
+    }
+
+  }
+}
+

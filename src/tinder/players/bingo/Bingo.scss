@@ -1,0 +1,74 @@
+.bingo-board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 448px;
+  margin: 10px 0;
+  border: 4px solid #545454;
+  color: #545454;
+  border-radius: 5px;
+  background-image: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
+
+  .bingo-cell {
+    border: 1px solid #545454;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 40px;
+    overflow: hidden;
+    text-align: center;
+    background: white;
+
+    .cell-input {
+      width: 100%;
+      text-align: center;
+    }
+
+    .cell-button {
+      margin: 0 4px;
+      cursor: pointer;
+      display: inline-block;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      .fa-check {
+        color: green;
+      }
+
+      .fa-times {
+        color: red;
+      }
+    }
+
+    .bingo-word {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .bingo-hits {
+      margin-left: 5px;
+    }
+
+    &.active {
+      animation-name: blink;
+      animation-duration: 1s;
+      animation-iteration-count: 5;
+      background: none;
+      color: white;
+    }
+
+    &.active-bingo {
+      background: yellow;
+      color: black;
+    }
+
+  }
+}
+
+@keyframes blink {
+  50% {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
