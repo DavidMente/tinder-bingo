@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from "react";
+import React, {FunctionComponent, useEffect, useState} from "react";
 import {RootState} from "../../store";
 import {connect, ConnectedProps} from "react-redux";
 import {nope, yiss} from "../../utils/dom";
@@ -37,9 +37,14 @@ const connector = connect(mapState, mapDispatch);
 const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
   ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound, stopOn, stop, swipeRight}) => {
 
+    const [descriptions, setDescriptions] = useState([]);
+
     useEffect(() => {
       if (isRunning) {
         processProfile();
+        if (profile.description !== null) {
+          setDescriptions([...descriptions, profile.description]);
+        }
       }
     }, [profile.name, isRunning]);
 
@@ -85,6 +90,10 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
       return profile.description !== null ? words.filter((word) => profile.description.toLowerCase().includes(word)) : [];
     }
 
+    function writeDataToClip() {
+      navigator.clipboard.writeText(JSON.stringify(descriptions));
+    }
+
     return <div className={'profile-container'}>
       <div className={'profile' + (words.length === 0 ? ' hidden' : '')}>
         <Highlighter
@@ -92,6 +101,7 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
           textToHighlight={profile.description || ''}
         />
       </div>
+      <div onClick={writeDataToClip}>Write collected data to clip</div>
     </div>;
   };
 export default connector(ProfileComponent)
