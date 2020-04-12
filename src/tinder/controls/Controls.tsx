@@ -4,7 +4,7 @@ import StartButton from "./StartButton";
 import BingoImage from "./BingoImage";
 
 const Controls: FunctionComponent = () =>
-  <div>
+  <div className={'control-section'}>
     <StartButton />
     <BingoImage />
   </div>;

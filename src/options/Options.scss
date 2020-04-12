@@ -1,11 +1,11 @@
 body {
   margin: 0;
+  background: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
+  color: white;
 
   .options-container {
-    background: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
-    color: white;
     padding: 10px;
-    min-width: 500px;
+    min-width: 400px;
 
     .options-header {
       font-size: 1.25rem;
@@ -15,11 +15,16 @@ body {
 
     .player-options {
 
-      margin: 5px 0 ;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
 
       input {
+        margin-top: 5px;
         width: 200px;
         padding: 5px;
+        border-radius: 5px;
+        border: none;
       }
 
       .player-button {
@@ -40,6 +45,12 @@ body {
 
     .options {
       margin: 10px 0;
+
+      select {
+        margin-left: 5px;
+        border-radius: 5px;
+        border: none;
+      }
     }
 
   }

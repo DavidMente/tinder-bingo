@@ -22,8 +22,8 @@ type OptionsProps = ConnectedProps<typeof connector>
 
 const Options: FunctionComponent<OptionsProps> = ({players}) => {
   return <div className="options-container">
-    <div className={'options-header'}>Tinder Bingo</div>
-    <div className={'player-options'}>
+    <div className={'options-header'}><i className="fas fa-fire"/> Tinder Bingo</div>
+    <div className={'player-options options'}>
       <div>Players</div>
       <AddPlayer />
       {players.map((player) => <PlayerComponent key={player.id} player={player} />)}

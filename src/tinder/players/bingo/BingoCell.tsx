@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FunctionComponent, useEffect, useRef, useState} from "react";
+import React, {ChangeEvent, FunctionComponent, useEffect, useState} from "react";
 import {Player, Word} from "../../../store/players/types";
 import {changeWord} from "../../../store/players/actions";
 import {connect, ConnectedProps} from "react-redux";
