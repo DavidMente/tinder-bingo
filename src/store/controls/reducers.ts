@@ -1,9 +1,19 @@
-import {ADD_ROUND, CHANGE_STOP_ON, Controls, ControlsActionTypes, RUN_ALGORITHM, STOP_ALGORITHM, StopOn} from "./types";
+import {
+  ADD_ROUND,
+  CHANGE_STOP_ON,
+  Controls,
+  ControlsActionTypes,
+  RUN_ALGORITHM,
+  STOP_ALGORITHM,
+  StopOn,
+  TOGGLE_SWIPE_RIGHT
+} from "./types";
 
 const initialState: Controls = {
   isRunning: false,
   rounds: 0,
-  stopOn: StopOn.BINGO
+  stopOn: StopOn.BINGO,
+  swipeRight: false
 };
 
 export function controlsReducer(state = initialState, action: ControlsActionTypes): Controls {
@@ -16,6 +26,9 @@ export function controlsReducer(state = initialState, action: ControlsActionType
       return {...state, rounds: state.rounds + 1};
     case CHANGE_STOP_ON: {
       return {...state, stopOn: action.payload};
+    }
+    case TOGGLE_SWIPE_RIGHT: {
+      return {...state, swipeRight: !state.swipeRight};
     }
     default:
       return state

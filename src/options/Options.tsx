@@ -5,6 +5,7 @@ import {connect, ConnectedProps} from "react-redux";
 import PlayerComponent from "./players/PlayerComponent";
 import AddPlayer from "./players/AddPlayer";
 import StopOnSetting from "./StopOnSetting";
+import SwipeRightCheckbox from "./SwipeRightCheckbox";
 
 const mapState = (state: RootState) => {
   return {
@@ -28,6 +29,7 @@ const Options: FunctionComponent<OptionsProps> = ({players}) => {
       {players.map((player) => <PlayerComponent key={player.id} player={player} />)}
     </div>
     <StopOnSetting />
+    <SwipeRightCheckbox />
   </div>;
 };
 

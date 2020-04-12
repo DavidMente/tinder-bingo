@@ -1,4 +1,12 @@
-import {ADD_ROUND, CHANGE_STOP_ON, ControlsActionTypes, RUN_ALGORITHM, STOP_ALGORITHM, StopOn} from "./types";
+import {
+  ADD_ROUND,
+  CHANGE_STOP_ON,
+  ControlsActionTypes,
+  RUN_ALGORITHM,
+  STOP_ALGORITHM,
+  StopOn,
+  TOGGLE_SWIPE_RIGHT
+} from "./types";
 
 export function runAlgorithm(): ControlsActionTypes {
   return {
@@ -22,5 +30,11 @@ export function changeStopOn(stopOn: StopOn): ControlsActionTypes {
   return {
     type: CHANGE_STOP_ON,
     payload: stopOn
+  }
+}
+
+export function toggleSwipeRight(): ControlsActionTypes {
+  return {
+    type: TOGGLE_SWIPE_RIGHT,
   }
 }

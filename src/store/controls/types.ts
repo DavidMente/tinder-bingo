@@ -1,13 +1,15 @@
 export interface Controls {
   isRunning: boolean,
   rounds: number,
-  stopOn: StopOn
+  stopOn: StopOn,
+  swipeRight: boolean
 }
 
 export const RUN_ALGORITHM = 'RUN_ALGORITHM';
 export const STOP_ALGORITHM = 'STOP_ALGORITHM';
 export const ADD_ROUND = 'ADD_ROUND';
 export const CHANGE_STOP_ON = 'CHANGE_STOP_ON';
+export const TOGGLE_SWIPE_RIGHT = 'TOGGLE_SWIPE_RIGHT';
 
 interface RunAlgorithm {
   type: typeof RUN_ALGORITHM
@@ -32,4 +34,8 @@ interface ChangeStopOn {
   payload: StopOn
 }
 
-export type ControlsActionTypes = RunAlgorithm | StopAlgorithm | AddRound | ChangeStopOn
+interface ToggleSwipeRight {
+  type: typeof TOGGLE_SWIPE_RIGHT
+}
+
+export type ControlsActionTypes = RunAlgorithm | StopAlgorithm | AddRound | ChangeStopOn | ToggleSwipeRight

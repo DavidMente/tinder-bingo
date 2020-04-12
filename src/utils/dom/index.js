@@ -83,7 +83,7 @@ export function nope() {
   document.querySelector(NOPE_SELECTOR).click();
 }
 
-function yiss() {
+export function yiss() {
   document.querySelector(YISS_SELECTOR).click();
 }
 

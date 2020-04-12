@@ -23,7 +23,7 @@ const StopOnSetting: FunctionComponent<ConnectedProps<typeof connector>> = ({sto
     changeStopOn(stopOn);
   }
 
-  return <div>
+  return <div className={'options'}>
     <label htmlFor={'stop-on-select'}>Stop Madness on</label>
     <select value={stopOn} id={'stop-on-select'} onChange={handleChange}>
       <option value={StopOn.BINGO}>Bingo</option>

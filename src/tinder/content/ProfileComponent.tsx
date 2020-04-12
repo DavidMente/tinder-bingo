@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect} from "react";
 import {RootState} from "../../store";
 import {connect, ConnectedProps} from "react-redux";
-import {nope} from "../../utils/dom";
+import {nope, yiss} from "../../utils/dom";
 import {clearActiveBingos, processWordlist} from "../../store/players/actions";
 import {setProcessed} from "../../store/profile/actions";
 import Highlighter from "react-highlight-words";
@@ -12,6 +12,7 @@ import {StopOn} from "../../store/controls/types";
 const mapState = (state: RootState) => {
   return {
     stopOn: state.controls.stopOn,
+    swipeRight: state.controls.swipeRight,
     isRunning: state.controls.isRunning,
     words: state.words.words,
     profile: state.profile,
@@ -34,7 +35,7 @@ const mapDispatch = {
 const connector = connect(mapState, mapDispatch);
 
 const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
-  ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound, stopOn, stop}) => {
+  ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound, stopOn, stop, swipeRight}) => {
 
     useEffect(() => {
       if (isRunning) {
@@ -69,7 +70,11 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
     function continueIfProcessed() {
       if (profile.processed) {
         setTimeout(() => {
-          nope();
+          if (swipeRight) {
+            yiss();
+          } else {
+            nope();
+          }
           clearActiveBingos();
           addRound();
         }, 500);
