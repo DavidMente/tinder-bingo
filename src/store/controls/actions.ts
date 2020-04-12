@@ -3,6 +3,7 @@ import {
   CHANGE_STOP_ON,
   ControlsActionTypes,
   RUN_ALGORITHM,
+  SET_WORD_FREQUENCY,
   STOP_ALGORITHM,
   StopOn,
   TOGGLE_SWIPE_RIGHT
@@ -36,5 +37,12 @@ export function changeStopOn(stopOn: StopOn): ControlsActionTypes {
 export function toggleSwipeRight(): ControlsActionTypes {
   return {
     type: TOGGLE_SWIPE_RIGHT,
+  }
+}
+
+export function setWordFrequency(frequency: number): ControlsActionTypes {
+  return {
+    type: SET_WORD_FREQUENCY,
+    payload: frequency
   }
 }

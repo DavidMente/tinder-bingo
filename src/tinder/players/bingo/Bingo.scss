@@ -8,6 +8,7 @@
   color: #545454;
   border-radius: 5px;
   background-image: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
+  overflow: hidden;
 
   .bingo-cell {
     border: 1px solid #545454;
@@ -16,7 +17,6 @@
     justify-content: center;
     width: 88px;
     height: 40px;
-    overflow: hidden;
     text-align: center;
     background: white;
 
@@ -46,10 +46,13 @@
     .bingo-word {
       font-weight: bold;
       cursor: pointer;
+      &.compact {
+        font-size: 1.2rem;
+      }
     }
 
     .bingo-hits {
-      margin-left: 5px;
+      font-size: 1.2rem;
     }
 
     &.active {

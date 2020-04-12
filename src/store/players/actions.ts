@@ -10,10 +10,10 @@ import {
   REMOVE_PLAYER
 } from "./types";
 
-export function addPlayer(name: string): PlayerActionTypes {
+export function addPlayer(name: string, wordFrequency: number): PlayerActionTypes {
   return {
     type: ADD_PLAYER,
-    payload: name
+    payload: {name, wordFrequency}
   }
 }
 
@@ -44,9 +44,9 @@ export function changeWord(changedWord: ChangedWord): PlayerActionTypes {
   }
 }
 
-export function randomizeWords(player: Player): PlayerActionTypes {
+export function randomizeWords(player: Player, wordFrequency: number): PlayerActionTypes {
   return {
     type: RANDOMIZE_WORDS,
-    payload: player
+    payload: {player, wordFrequency}
   }
 }

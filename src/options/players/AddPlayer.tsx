@@ -8,18 +8,19 @@ import {collectWords} from "../../store/words/actions";
 const mapState = (state: RootState) => {
   return {
     playerCount: state.players.players.length,
-    players: state.players.players
+    players: state.players.players,
+    wordFrequency: state.controls.wordFrequency
   }
 };
 
 const mapDispatch = {
   collectAllWords: (players: Player[]) => collectWords(players),
-  add: (name: string) => addPlayer(name)
+  add: (name: string, wordFrequency: number) => addPlayer(name, wordFrequency)
 };
 
 const connector = connect(mapState, mapDispatch);
 
-const AddPlayer: FunctionComponent<ConnectedProps<typeof connector>> = ({collectAllWords, playerCount, players, add}) => {
+const AddPlayer: FunctionComponent<ConnectedProps<typeof connector>> = ({collectAllWords, playerCount, players, add, wordFrequency}) => {
 
   useEffect(() => {
     collectAllWords(players);
@@ -33,14 +34,14 @@ const AddPlayer: FunctionComponent<ConnectedProps<typeof connector>> = ({collect
 
   function addIfNotEmpty(name: string): void {
     if (name !== '') {
-      add(name)
+      add(name, wordFrequency)
     }
   }
 
   return <div>
-    <input type={"text"} onChange={editName} placeholder={'Add Player'}/>
+    <input type={"text"} onChange={editName} placeholder={'Add Player'} />
     <div className={'player-button'} onClick={() => addIfNotEmpty(name)}>
-      <i className={'fas fa-check'}/>
+      <i className={'fas fa-check'} />
     </div>
   </div>
 };

@@ -6,6 +6,7 @@ import PlayerComponent from "./players/PlayerComponent";
 import AddPlayer from "./players/AddPlayer";
 import StopOnSetting from "./StopOnSetting";
 import SwipeRightCheckbox from "./SwipeRightCheckbox";
+import WordFrequency from "./WordFrequency";
 
 const mapState = (state: RootState) => {
   return {
@@ -22,13 +23,14 @@ type OptionsProps = ConnectedProps<typeof connector>
 
 const Options: FunctionComponent<OptionsProps> = ({players}) => {
   return <div className="options-container">
-    <div className={'options-header'}><i className="fas fa-fire"/> Tinder Bingo</div>
+    <div className={'options-header'}><i className="fas fa-fire" /> Tinder Bingo</div>
     <div className={'player-options options'}>
       <div>Players</div>
       <AddPlayer />
       {players.map((player) => <PlayerComponent key={player.id} player={player} />)}
     </div>
     <StopOnSetting />
+    <WordFrequency />
     <SwipeRightCheckbox />
   </div>;
 };

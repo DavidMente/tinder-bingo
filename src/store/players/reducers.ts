@@ -20,8 +20,8 @@ function generateRandomId(): number {
   return Math.round(Math.random() * 10000);
 }
 
-export function getRandomWords(): Word[] {
-  const wordList = Array.from({length: 25}).map(() => getRandomWord());
+export function getRandomWords(wordFrequency = 50): Word[] {
+  const wordList = Array.from({length: 25}).map(() => getRandomWord(wordFrequency));
   wordList[12] = {word: 'FREE', hits: 1};
   return wordList;
 }
@@ -43,9 +43,9 @@ export function playersReducer(state = initialState, action: PlayerActionTypes):
     case ADD_PLAYER:
       return {
         players: [...state.players, {
-          name: action.payload,
+          name: action.payload.name,
           id: generateRandomId(),
-          words: getRandomWords(),
+          words: getRandomWords(action.payload.wordFrequency),
           totalBingos: 0,
           activeBingos: []
         }]
@@ -83,8 +83,8 @@ export function playersReducer(state = initialState, action: PlayerActionTypes):
     case RANDOMIZE_WORDS: {
       return {
         players: state.players.map((player) => {
-          if (player.name === action.payload.name) {
-            return {...player, words: getRandomWords()}
+          if (player.name === action.payload.player.name) {
+            return {...player, words: getRandomWords(action.payload.wordFrequency)}
           } else {
             return player
           }

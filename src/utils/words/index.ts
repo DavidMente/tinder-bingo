@@ -1,8 +1,12 @@
 import {Word} from "../../store/players/types";
-import WORDS from './data'
+import WORDS from './data';
+import * as _ from 'lodash';
 
-export function getRandomWord(): Word {
-  const wordList = WORDS;
-  const word = wordList[Math.floor(Math.random() * wordList.length)];
-  return {word: word, hits: 0}
+const wordList = _.sortBy(WORDS, ['count']);
+
+export function getRandomWord(frequency = 50): Word {
+  const randomNumber = Math.random() * 0.5 + frequency * 0.005;
+  const index = Math.floor(randomNumber * wordList.length);
+  const word = wordList[index];
+  return {word: word.word, hits: 0}
 }

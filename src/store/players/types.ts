@@ -27,6 +27,11 @@ export interface Players {
   players: Player[]
 }
 
+export interface AddedPlayer {
+  name: string,
+  wordFrequency: number
+}
+
 export const ADD_PLAYER = 'ADD_PLAYER';
 export const REMOVE_PLAYER = 'REMOVE_PLAYER';
 export const PROCESS_WORDLIST = 'PROCESS_WORDLIST';
@@ -36,7 +41,7 @@ export const RANDOMIZE_WORDS = 'RANDOMIZE_WORD';
 
 interface AddPlayer {
   type: typeof ADD_PLAYER,
-  payload: string
+  payload: AddedPlayer
 }
 
 interface RemovePlayer {
@@ -58,9 +63,14 @@ interface ChangeWord {
   payload: ChangedWord
 }
 
+interface PlayerWithFrequency {
+  player: Player,
+  wordFrequency: number
+}
+
 interface RandomizeWords {
   type: typeof RANDOMIZE_WORDS,
-  payload: Player
+  payload: PlayerWithFrequency
 }
 
 export type PlayerActionTypes =

@@ -62,7 +62,7 @@ const BingoCell: FunctionComponent<BingoCellProps & ConnectedProps<typeof connec
         </div>
         : <div>
         <span onClick={() => setEditMode(true)} title={word.word}
-              className={'bingo-word'}>{word.word}</span> {word.word !== 'FREE' ?
+              className={'bingo-word' + (word.word.length > 7 ? ' compact' : '')}>{word.word}</span> {word.word !== 'FREE' ?
           <span className={'bingo-hits'}>({word.hits})</span> : ''}
         </div>
       }

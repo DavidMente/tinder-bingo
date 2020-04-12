@@ -15,10 +15,6 @@ body {
 
     .player-options {
 
-      padding: 5px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 5px;
-
       input {
         margin-top: 5px;
         width: 200px;
@@ -45,12 +41,21 @@ body {
 
     .options {
       margin: 10px 0;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
 
       select {
         margin-left: 5px;
         border-radius: 5px;
         border: none;
       }
+
+      .slider-container {
+        display: flex;
+        align-items: center;
+      }
+
     }
 
   }

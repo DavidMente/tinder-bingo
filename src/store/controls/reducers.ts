@@ -4,6 +4,7 @@ import {
   Controls,
   ControlsActionTypes,
   RUN_ALGORITHM,
+  SET_WORD_FREQUENCY,
   STOP_ALGORITHM,
   StopOn,
   TOGGLE_SWIPE_RIGHT
@@ -13,7 +14,8 @@ const initialState: Controls = {
   isRunning: false,
   rounds: 0,
   stopOn: StopOn.BINGO,
-  swipeRight: false
+  swipeRight: false,
+  wordFrequency: 50,
 };
 
 export function controlsReducer(state = initialState, action: ControlsActionTypes): Controls {
@@ -29,6 +31,9 @@ export function controlsReducer(state = initialState, action: ControlsActionType
     }
     case TOGGLE_SWIPE_RIGHT: {
       return {...state, swipeRight: !state.swipeRight};
+    }
+    case SET_WORD_FREQUENCY: {
+      return {...state, wordFrequency: action.payload};
     }
     default:
       return state

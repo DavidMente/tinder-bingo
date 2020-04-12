@@ -1,4 +1,5 @@
 const THATS_A_BINGO_SELECTOR = '#bingo-image';
+const SWIPE_SECTION = '.recsCardboard';
 const NAVBAR_SELECTOR = '.desktopNavbar';
 const ASIDE_SELECTOR = 'aside';
 const MAIN_SELECTOR = 'main';
@@ -90,8 +91,10 @@ export function yiss() {
 export function thatsABingo() {
   const audio = new Audio(chrome.runtime.getURL('bingo.mp3'));
   audio.play();
+  document.querySelector(SWIPE_SECTION).style.display = 'none';
   document.querySelector(THATS_A_BINGO_SELECTOR).style.display = 'block';
   setTimeout(() => {
     document.querySelector(THATS_A_BINGO_SELECTOR).style.display = 'none';
-  }, 8000);
+    document.querySelector(SWIPE_SECTION).style.display = 'block';
+  }, 5000);
 }
