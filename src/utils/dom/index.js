@@ -96,5 +96,5 @@ export function thatsABingo() {
   setTimeout(() => {
     document.querySelector(THATS_A_BINGO_SELECTOR).style.display = 'none';
     document.querySelector(SWIPE_SECTION).style.display = 'block';
-  }, 5000);
+  }, 4700);
 }

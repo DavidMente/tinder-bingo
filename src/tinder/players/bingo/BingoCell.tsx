@@ -29,6 +29,7 @@ const BingoCell: FunctionComponent<BingoCellProps & ConnectedProps<typeof connec
   ({player, index, word, activeBingo, changeWord, players, collectAllWords}) => {
 
     useEffect(() => {
+      setEditableWord(word.word);
       collectAllWords(players);
     }, [word.word]);
 
