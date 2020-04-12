@@ -13,25 +13,32 @@ body {
       margin-bottom: 10px;
     }
 
-    input {
-      width: 200px;
-      padding: 5px;
-    }
+    .player-options {
 
-    .player-button {
-      cursor: pointer;
-      display: inline-block;
-      margin: 5px;
-      color: white;
+      margin: 5px 0 ;
 
-      &:hover {
-        color: rgba(255, 255, 255, 0.5);
+      input {
+        width: 200px;
+        padding: 5px;
+      }
+
+      .player-button {
+        cursor: pointer;
+        display: inline-block;
+        margin: 5px;
+        color: white;
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .player-name {
+        display: inline-block;
       }
     }
 
-    .player-name {
-      display: inline-block;
-    }
+
 
   }
 }

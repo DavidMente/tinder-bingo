@@ -4,6 +4,7 @@ import {RootState} from "../store";
 import {connect, ConnectedProps} from "react-redux";
 import PlayerComponent from "./players/PlayerComponent";
 import AddPlayer from "./players/AddPlayer";
+import StopOnSetting from "./StopOnSetting";
 
 const mapState = (state: RootState) => {
   return {
@@ -21,8 +22,12 @@ type OptionsProps = ConnectedProps<typeof connector>
 const Options: FunctionComponent<OptionsProps> = ({players}) => {
   return <div className="options-container">
     <div className={'options-header'}>Tinder Bingo</div>
-    <AddPlayer />
-    {players.map((player) => <PlayerComponent key={player.id} player={player} />)}
+    <div className={'player-options'}>
+      <div>Players</div>
+      <AddPlayer />
+      {players.map((player) => <PlayerComponent key={player.id} player={player} />)}
+    </div>
+    <StopOnSetting />
   </div>;
 };
 

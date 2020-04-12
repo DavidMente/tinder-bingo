@@ -5,11 +5,13 @@ import {nope} from "../../utils/dom";
 import {clearActiveBingos, processWordlist} from "../../store/players/actions";
 import {setProcessed} from "../../store/profile/actions";
 import Highlighter from "react-highlight-words";
-import {addRound} from "../../store/controls/actions";
+import {addRound, runAlgorithm, stopAlgorithm} from "../../store/controls/actions";
 import './Profile.scss';
+import {StopOn} from "../../store/controls/types";
 
 const mapState = (state: RootState) => {
   return {
+    stopOn: state.controls.stopOn,
     isRunning: state.controls.isRunning,
     words: state.words.words,
     profile: state.profile,
@@ -25,61 +27,65 @@ const mapDispatch = {
   process: (words: string[]) => processWordlist(words),
   setProcessed: () => setProcessed(),
   addRound: () => addRound(),
-  clearActiveBingos: () => clearActiveBingos()
+  clearActiveBingos: () => clearActiveBingos(),
+  stop: () => stopAlgorithm(),
 };
 
 const connector = connect(mapState, mapDispatch);
 
 const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
-  ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound}) => {
+  ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound, stopOn, stop}) => {
 
-  useEffect(() => {
-    if (isRunning) {
-      processProfile();
-    }
-  }, [profile.name, isRunning]);
+    useEffect(() => {
+      if (isRunning) {
+        processProfile();
+      }
+    }, [profile.name, isRunning]);
 
-  useEffect(() => {
-    if (isRunning) {
-      continueIfProcessed();
-    }
-  }, [profile.processed, isRunning]);
+    useEffect(() => {
+      if (isRunning) {
+        continueIfProcessed();
+      }
+    }, [profile.processed, isRunning]);
 
-  useEffect(() => {
-    setProcessed();
-  }, [totalHits]);
+    useEffect(() => {
+      if (stopOn === StopOn.HIT) {
+        stop();
+      }
+      setProcessed();
+    }, [totalHits]);
 
-  function processProfile() {
-    if (profile.processed !== true) {
-      const matchingWords = getMatchingWords();
-      if (matchingWords.length > 0) {
-        process(matchingWords);
-      } else {
-        setProcessed();
+    function processProfile() {
+      if (profile.processed !== true) {
+        const matchingWords = getMatchingWords();
+        if (matchingWords.length > 0) {
+          process(matchingWords);
+        } else {
+          setProcessed();
+        }
       }
     }
-  }
 
-  function continueIfProcessed() {
-    if (profile.processed) {
-      setTimeout(() => {
-        nope();
-        clearActiveBingos();
-        addRound();
-      }, 500);
+    function continueIfProcessed() {
+      if (profile.processed) {
+        setTimeout(() => {
+          nope();
+          clearActiveBingos();
+          addRound();
+        }, 500);
+      }
     }
-  }
 
-  function getMatchingWords() {
-    return profile.description !== null ? words.filter((word) => profile.description.toLowerCase().includes(word)) : [];
-  }
+    function getMatchingWords() {
+      return profile.description !== null ? words.filter((word) => profile.description.toLowerCase().includes(word)) : [];
+    }
 
-  return <div className={'profile'}>
-    <div className={'profile-header'}>Current profile: {profile.name}</div>
-    <Highlighter
-      searchWords={words}
-      textToHighlight={profile.description || ''}
-    />
-  </div>;
-}
+    return <div className={'profile'}>
+      <div className={'profile-header'}>Current profile: {profile.name}</div>
+      <Highlighter
+        searchWords={words}
+        textToHighlight={profile.description || ''}
+      />
+    </div>;
+  }
 export default connector(ProfileComponent)

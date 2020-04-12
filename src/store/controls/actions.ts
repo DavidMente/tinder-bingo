@@ -1,4 +1,4 @@
-import {ADD_ROUND, ControlsActionTypes, RUN_ALGORITHM, STOP_ALGORITHM} from "./types";
+import {ADD_ROUND, CHANGE_STOP_ON, ControlsActionTypes, RUN_ALGORITHM, STOP_ALGORITHM, StopOn} from "./types";
 
 export function runAlgorithm(): ControlsActionTypes {
   return {
@@ -15,5 +15,12 @@ export function stopAlgorithm(): ControlsActionTypes {
 export function addRound(): ControlsActionTypes {
   return {
     type: ADD_ROUND,
+  }
+}
+
+export function changeStopOn(stopOn: StopOn): ControlsActionTypes {
+  return {
+    type: CHANGE_STOP_ON,
+    payload: stopOn
   }
 }

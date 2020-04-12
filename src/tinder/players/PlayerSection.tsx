@@ -5,27 +5,37 @@ import "./PlayerSection.scss";
 import {stopAlgorithm} from "../../store/controls/actions";
 import {connect, ConnectedProps} from "react-redux";
 import {thatsABingo} from "../../utils/dom";
+import {RootState} from "../../store";
+import {StopOn} from "../../store/controls/types";
 
 type PlayerSectionProps = {
   name: string,
   words: Word[],
   totalBingos: number,
-  activeBingos: Bingo[]
+  activeBingos: Bingo[],
 }
+
+const mapState = (state: RootState) => {
+  return {
+    stopOn: state.controls.stopOn
+  }
+};
 
 const mapDispatch = {
   stop: () => stopAlgorithm(),
 };
 
-const connector = connect(null, mapDispatch);
+const connector = connect(mapState, mapDispatch);
 
 const PlayerSection: FunctionComponent<PlayerSectionProps & ConnectedProps<typeof connector>> =
-  ({stop, name, words, totalBingos, activeBingos}) => {
+  ({stop, name, words, totalBingos, activeBingos, stopOn}) => {
 
     useEffect(() => {
       if (activeBingos.length > 0) {
         thatsABingo();
-        stop();
+        if (stopOn === StopOn.BINGO) {
+          stop();
+        }
       }
     }, [activeBingos]);
 

@@ -23,7 +23,7 @@ const StartButton: FunctionComponent<ConnectedProps<typeof connector>> = ({isRun
     if (isRunning) {
       stop();
     } else {
-      run()
+      run();
     }
   }
 
