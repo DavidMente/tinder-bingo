@@ -1,10 +1,12 @@
 import {
   ADD_PLAYER,
-  CHANGE_WORD, ChangedWord,
+  CHANGE_WORD,
+  ChangedWord,
   CLEAR_ACTIVE_BINGOS,
   Player,
   PlayerActionTypes,
   PROCESS_WORDLIST,
+  RANDOMIZE_WORDS,
   REMOVE_PLAYER
 } from "./types";
 
@@ -39,5 +41,12 @@ export function changeWord(changedWord: ChangedWord): PlayerActionTypes {
   return {
     type: CHANGE_WORD,
     payload: changedWord
+  }
+}
+
+export function randomizeWords(player: Player): PlayerActionTypes {
+  return {
+    type: RANDOMIZE_WORDS,
+    payload: player
   }
 }

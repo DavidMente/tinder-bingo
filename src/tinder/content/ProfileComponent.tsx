@@ -5,7 +5,7 @@ import {nope, yiss} from "../../utils/dom";
 import {clearActiveBingos, processWordlist} from "../../store/players/actions";
 import {setProcessed} from "../../store/profile/actions";
 import Highlighter from "react-highlight-words";
-import {addRound, runAlgorithm, stopAlgorithm} from "../../store/controls/actions";
+import {addRound, stopAlgorithm} from "../../store/controls/actions";
 import './Profile.scss';
 import {StopOn} from "../../store/controls/types";
 
@@ -85,12 +85,13 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
       return profile.description !== null ? words.filter((word) => profile.description.toLowerCase().includes(word)) : [];
     }
 
-    return <div className={'profile'}>
-      <div className={'profile-header'}>Current profile: {profile.name}</div>
-      <Highlighter
-        searchWords={words}
-        textToHighlight={profile.description || ''}
-      />
+    return <div className={'profile-container'}>
+      <div className={'profile' + (words.length === 0 ? ' hidden' : '')}>
+        <Highlighter
+          searchWords={words}
+          textToHighlight={profile.description || ''}
+        />
+      </div>
     </div>;
-  }
+  };
 export default connector(ProfileComponent)

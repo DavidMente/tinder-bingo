@@ -32,6 +32,7 @@ export const REMOVE_PLAYER = 'REMOVE_PLAYER';
 export const PROCESS_WORDLIST = 'PROCESS_WORDLIST';
 export const CLEAR_ACTIVE_BINGOS = 'CLEAR_ACTIVE_BINGOS';
 export const CHANGE_WORD = 'CHANGE_WORD';
+export const RANDOMIZE_WORDS = 'RANDOMIZE_WORD';
 
 interface AddPlayer {
   type: typeof ADD_PLAYER,
@@ -57,4 +58,15 @@ interface ChangeWord {
   payload: ChangedWord
 }
 
-export type PlayerActionTypes = AddPlayer | RemovePlayer | ProcessWordlist | ClearActiveBingos | ChangeWord
+interface RandomizeWords {
+  type: typeof RANDOMIZE_WORDS,
+  payload: Player
+}
+
+export type PlayerActionTypes =
+  AddPlayer
+  | RemovePlayer
+  | ProcessWordlist
+  | ClearActiveBingos
+  | ChangeWord
+  | RandomizeWords

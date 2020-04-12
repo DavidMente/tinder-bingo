@@ -5,6 +5,7 @@ import {
   PlayerActionTypes,
   Players,
   PROCESS_WORDLIST,
+  RANDOMIZE_WORDS,
   REMOVE_PLAYER,
   Word
 } from "./types";
@@ -79,6 +80,17 @@ export function playersReducer(state = initialState, action: PlayerActionTypes):
           }
         })
       };
+    case RANDOMIZE_WORDS: {
+      return {
+        players: state.players.map((player) => {
+          if (player.name === action.payload.name) {
+            return {...player, words: getRandomWords()}
+          } else {
+            return player
+          }
+        })
+      };
+    }
     default:
       return state
   }
