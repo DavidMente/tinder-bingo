@@ -17,10 +17,10 @@ const BingoImage: FunctionComponent<ConnectedProps<typeof connector>> = ({player
 
   return <div id={'bingo-image'}>
     <img src={chrome.runtime.getURL('bingo.gif')} alt={'THATS A BINGO'} />
-    <div
+    {winningPlayers.length > 0 ? <div
       className={'bingo-caption'}>{winningPlayers.join(' AND ').toUpperCase()}
       {winningPlayers.length === 1 ? ' HAS' : ' HAVE'} A BINGO!
-    </div>
+    </div> : ''}
   </div>;
-}
+};
 export default connector(BingoImage);

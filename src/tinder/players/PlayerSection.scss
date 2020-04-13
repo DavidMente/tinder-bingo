@@ -16,3 +16,13 @@
     }
   }
 }
+
+.instructions {
+  margin: 20px;
+  padding: 10px;
+  background: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
+  color: white;
+  .header {
+    font-weight: bold;
+  }
+}

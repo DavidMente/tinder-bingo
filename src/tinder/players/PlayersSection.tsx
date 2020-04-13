@@ -2,6 +2,7 @@ import React, {FunctionComponent} from "react";
 import {RootState} from "../../store";
 import {connect, ConnectedProps} from "react-redux";
 import PlayerSection from "./PlayerSection";
+import Instructions from "./Instructions";
 
 const mapState = (state: RootState) => {
   return {
@@ -16,9 +17,7 @@ const PlayersSection: FunctionComponent<ConnectedProps<typeof connector>> = ({pl
     {players.length > 0
       ? players.map((player) => <PlayerSection key={player.id} name={player.name} words={player.words}
                                                totalBingos={player.totalBingos} activeBingos={player.activeBingos} />)
-      : 'Click on the Tinder Bingo extension icon (top right) to add players. ' +
-      'You can edit the randomly chosen words on the Bingo boards by clicking on them. ' +
-      'If the program gets stuck, just press on stop and start again.'}
+      : <Instructions />}
   </div>;
 
 export default connector(PlayersSection)
