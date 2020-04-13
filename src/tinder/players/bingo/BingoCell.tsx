@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FunctionComponent, useEffect, useState} from "react";
+import React, {ChangeEvent, FunctionComponent, KeyboardEventHandler, useEffect, useState} from "react";
 import {Player, Word} from "../../../store/players/types";
 import {changeWord} from "../../../store/players/actions";
 import {connect, ConnectedProps} from "react-redux";
@@ -45,6 +45,12 @@ const BingoCell: FunctionComponent<BingoCellProps & ConnectedProps<typeof connec
       setEditMode(false);
     }
 
+    function keyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+      if (e.key === 'Enter') {
+        submit();
+      }
+    }
+
     function submit() {
       changeWord(player, index, editableWord);
       setEditMode(false);
@@ -53,7 +59,8 @@ const BingoCell: FunctionComponent<BingoCellProps & ConnectedProps<typeof connec
     return <div className={'bingo-cell' + (word.hits > 0 ? ' active' : '') + (activeBingo ? ' active-bingo' : '')}>
       {editMode && word.word !== 'FREE'
         ? <div>
-          <input autoFocus className={'cell-input'} type={'text'} value={editableWord} onChange={editWord} />
+          <input autoFocus className={'cell-input'} type={'text'} value={editableWord} onChange={editWord}
+                 onKeyDown={keyDown} />
           <div className={'cell-button'} onClick={submit}>
             <i className={"fas fa-check"} />
           </div>

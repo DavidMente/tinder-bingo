@@ -32,6 +32,12 @@ const AddPlayer: FunctionComponent<ConnectedProps<typeof connector>> = ({collect
     setName(event.target.value);
   }
 
+  function keyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      submit(name);
+    }
+  }
+
   function submit(name: string): void {
     add(name, wordFrequency);
     setName('');
@@ -39,7 +45,7 @@ const AddPlayer: FunctionComponent<ConnectedProps<typeof connector>> = ({collect
 
   return <div>
     <input className={'styled-input'} value={name} type={"text"} onChange={editName} placeholder={'Add Player'} />
-    {name !== '' ? <div className={'player-button'} onClick={() => submit(name)}>
+    {name !== '' ? <div className={'player-button'} onClick={() => submit(name)} onKeyDown={keyDown}>
       <i className={'fas fa-check'} />
     </div> : ''}
   </div>

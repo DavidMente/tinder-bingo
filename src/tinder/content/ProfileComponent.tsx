@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from "react";
+import React, {FunctionComponent, useEffect, useState} from "react";
 import {RootState} from "../../store";
 import {connect, ConnectedProps} from "react-redux";
 import {nope, yiss} from "../../utils/dom";
@@ -57,11 +57,14 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
       setProcessed();
     }, [totalHits]);
 
+    const [matchingWords, setMatchingWords] = useState([]);
+
     function processProfile() {
       if (profile.processed !== true) {
-        const matchingWords = getMatchingWords();
-        if (matchingWords.length > 0) {
-          process(matchingWords);
+        const matches = getMatchingWords();
+        setMatchingWords(matches);
+        if (matches.length > 0) {
+          process(matches);
         } else {
           setProcessed();
         }
@@ -83,13 +86,17 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
     }
 
     function getMatchingWords() {
-      return profile.description !== null ? words.filter((word) => profile.description.toLowerCase().includes(word)) : [];
+      return profile.description !== null ? words.filter((word) => {
+        // return profile.description.toLowerCase().includes(word) // non-exact match
+        const pattern = `([^a-z0-9]|^)${word}([^a-z0-9]|$)`;
+        return profile.description.match(new RegExp(pattern, 'i'))
+      }) : [];
     }
 
     return <div className={'profile-container'}>
-      <div className={'profile' + (words.length === 0 ? ' hidden' : '')}>
+      <div className={'profile'}>
         <Highlighter
-          searchWords={words}
+          searchWords={matchingWords}
           textToHighlight={profile.description || ''}
         />
       </div>
