@@ -23,7 +23,7 @@ const SwipingSpeed: FunctionComponent<ConnectedProps<typeof connector>> = ({swip
 
   return <div className={'options'}>
     <label htmlFor={'swiping-speed'}>Swiping speed in milliseconds (recommended: 500)</label>
-    <input type={'number'} value={swipingSpeed} id={'swiping-speed'} onChange={handleChange} />
+    <input type={'number'} className={'styled-input'} value={swipingSpeed} id={'swiping-speed'} onChange={handleChange} />
   </div>;
 };
 export default connector(SwipingSpeed)
