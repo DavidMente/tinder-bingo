@@ -775,5 +775,6 @@ export default [
     "word": "\u0447\u0442\u043e\u0431\u044b",
     "count": 3,
     "frequency": 0.002705139765554554
+  }
   ]
-};
+;
