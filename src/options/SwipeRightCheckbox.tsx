@@ -19,7 +19,7 @@ const SwipeRightCheckbox: FunctionComponent<ConnectedProps<typeof connector>> = 
 
   return <div className={'options'}>
     <label htmlFor={'swipe-right-checkbox'}>I actually want to swipe right</label>
-    <input id={'swipe-right-checkbox'} type={'checkbox'} checked={swipeRight} onChange={toggleSwipeRight} />
+    <input className={'styled-input'} id={'swipe-right-checkbox'} type={'checkbox'} checked={swipeRight} onChange={toggleSwipeRight} />
     {swipeRight ? 'LOL, okay' : ''}
   </div>
 };

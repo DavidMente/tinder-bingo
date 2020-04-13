@@ -3,7 +3,8 @@ export interface Controls {
   rounds: number,
   stopOn: StopOn,
   swipeRight: boolean,
-  wordFrequency: number
+  wordFrequency: number,
+  swipingSpeed: number,
 }
 
 export const RUN_ALGORITHM = 'RUN_ALGORITHM';
@@ -12,6 +13,7 @@ export const ADD_ROUND = 'ADD_ROUND';
 export const CHANGE_STOP_ON = 'CHANGE_STOP_ON';
 export const TOGGLE_SWIPE_RIGHT = 'TOGGLE_SWIPE_RIGHT';
 export const SET_WORD_FREQUENCY = 'SET_WORD_FREQUENCY';
+export const SET_SWIPING_SPEED = 'SET_SWIPING_SPEED';
 
 interface RunAlgorithm {
   type: typeof RUN_ALGORITHM
@@ -45,6 +47,11 @@ interface SetWordFrequency {
   payload: number
 }
 
+interface SetSwipingSpeed {
+  type: typeof SET_SWIPING_SPEED,
+  payload: number
+}
+
 export type ControlsActionTypes =
   RunAlgorithm
   | StopAlgorithm
@@ -52,3 +59,4 @@ export type ControlsActionTypes =
   | ChangeStopOn
   | ToggleSwipeRight
   | SetWordFrequency
+  | SetSwipingSpeed

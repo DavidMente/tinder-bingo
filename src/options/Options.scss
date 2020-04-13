@@ -15,14 +15,6 @@ body {
 
     .player-options {
 
-      input {
-        margin-top: 5px;
-        width: 200px;
-        padding: 5px;
-        border-radius: 5px;
-        border: none;
-      }
-
       .player-button {
         cursor: pointer;
         display: inline-block;
@@ -44,6 +36,14 @@ body {
       padding: 5px;
       background: rgba(255, 255, 255, 0.2);
       border-radius: 5px;
+
+      .styled-input {
+        margin-top: 5px;
+        width: 200px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+      }
 
       select {
         margin-left: 5px;

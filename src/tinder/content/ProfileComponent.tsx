@@ -13,6 +13,7 @@ const mapState = (state: RootState) => {
   return {
     stopOn: state.controls.stopOn,
     swipeRight: state.controls.swipeRight,
+    swipingSpeed: state.controls.swipingSpeed,
     isRunning: state.controls.isRunning,
     words: state.words.words,
     profile: state.profile,
@@ -35,7 +36,7 @@ const mapDispatch = {
 const connector = connect(mapState, mapDispatch);
 
 const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
-  ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound, stopOn, stop, swipeRight}) => {
+  ({isRunning, profile, words, process, setProcessed, totalHits, clearActiveBingos, addRound, stopOn, stop, swipeRight, swipingSpeed}) => {
 
     useEffect(() => {
       if (isRunning) {
@@ -77,7 +78,7 @@ const ProfileComponent: FunctionComponent<ConnectedProps<typeof connector>> =
           }
           clearActiveBingos();
           addRound();
-        }, 500);
+        }, swipingSpeed);
       }
     }
 

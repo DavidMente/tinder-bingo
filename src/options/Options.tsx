@@ -7,6 +7,7 @@ import AddPlayer from "./players/AddPlayer";
 import StopOnSetting from "./StopOnSetting";
 import SwipeRightCheckbox from "./SwipeRightCheckbox";
 import WordFrequency from "./WordFrequency";
+import SwipingSpeed from "./SwipingSpeed";
 
 const mapState = (state: RootState) => {
   return {
@@ -31,6 +32,7 @@ const Options: FunctionComponent<OptionsProps> = ({players}) => {
     </div>
     <StopOnSetting />
     <WordFrequency />
+    <SwipingSpeed />
     <SwipeRightCheckbox />
   </div>;
 };

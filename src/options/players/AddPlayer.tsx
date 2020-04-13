@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FunctionComponent, useEffect} from "react";
+import React, {ChangeEvent, FunctionComponent, useEffect, useState} from "react";
 import {addPlayer} from "../../store/players/actions";
 import {connect, ConnectedProps} from "react-redux";
 import {RootState} from "../../store";
@@ -26,23 +26,22 @@ const AddPlayer: FunctionComponent<ConnectedProps<typeof connector>> = ({collect
     collectAllWords(players);
   }, [playerCount]);
 
-  let name = '';
+  const [name, setName] = useState('');
 
   function editName(event: ChangeEvent<HTMLInputElement>) {
-    name = event.target.value;
+    setName(event.target.value);
   }
 
-  function addIfNotEmpty(name: string): void {
-    if (name !== '') {
-      add(name, wordFrequency)
-    }
+  function submit(name: string): void {
+    add(name, wordFrequency);
+    setName('');
   }
 
   return <div>
-    <input type={"text"} onChange={editName} placeholder={'Add Player'} />
-    <div className={'player-button'} onClick={() => addIfNotEmpty(name)}>
+    <input className={'styled-input'} value={name} type={"text"} onChange={editName} placeholder={'Add Player'} />
+    {name !== '' ? <div className={'player-button'} onClick={() => submit(name)}>
       <i className={'fas fa-check'} />
-    </div>
+    </div> : ''}
   </div>
 };
 

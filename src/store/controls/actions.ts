@@ -3,6 +3,7 @@ import {
   CHANGE_STOP_ON,
   ControlsActionTypes,
   RUN_ALGORITHM,
+  SET_SWIPING_SPEED,
   SET_WORD_FREQUENCY,
   STOP_ALGORITHM,
   StopOn,
@@ -44,5 +45,12 @@ export function setWordFrequency(frequency: number): ControlsActionTypes {
   return {
     type: SET_WORD_FREQUENCY,
     payload: frequency
+  }
+}
+
+export function setSwipingSpeed(speed: number): ControlsActionTypes {
+  return {
+    type: SET_SWIPING_SPEED,
+    payload: speed
   }
 }
