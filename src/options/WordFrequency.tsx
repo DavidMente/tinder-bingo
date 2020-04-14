@@ -35,9 +35,9 @@ const WordFrequency: FunctionComponent<ConnectedProps<typeof connector>> = ({wor
   return <div className={'options'}>
     <div>Choose how rare the random words should be</div>
     <div className={'slider-container'}>
-      <div>Rare</div>
-      <div><input type={'range'} value={wordFrequency} onChange={handleChange} /></div>
       <div>Common</div>
+      <div><input type={'range'} value={wordFrequency} onChange={handleChange} /></div>
+      <div>Rare</div>
     </div>
     <div>For example: {randomWords.map((word) => word.word).join(', ')}</div>
   </div>
