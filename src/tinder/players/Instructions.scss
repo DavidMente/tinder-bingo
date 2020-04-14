@@ -1,0 +1,12 @@
+.instructions {
+  padding: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right top, #FF655B, #FF5864, #FD297B);
+  color: white;
+  .header {
+    font-weight: bold;
+  }
+  > div {
+    margin-bottom: 10px;
+  }
+}

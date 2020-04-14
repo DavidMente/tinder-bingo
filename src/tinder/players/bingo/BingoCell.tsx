@@ -48,6 +48,8 @@ const BingoCell: FunctionComponent<BingoCellProps & ConnectedProps<typeof connec
     function keyDown(e: React.KeyboardEvent<HTMLInputElement>) {
       if (e.key === 'Enter') {
         submit();
+      } else if (e.key === 'ESC') {
+        cancel();
       }
     }
 

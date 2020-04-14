@@ -8,6 +8,7 @@ import StopOnSetting from "./StopOnSetting";
 import SwipeRightCheckbox from "./SwipeRightCheckbox";
 import WordFrequency from "./WordFrequency";
 import SwipingSpeed from "./SwipingSpeed";
+import Instructions from "../tinder/players/Instructions";
 
 const mapState = (state: RootState) => {
   return {
@@ -34,6 +35,7 @@ const Options: FunctionComponent<OptionsProps> = ({players}) => {
     <WordFrequency />
     <SwipingSpeed />
     <SwipeRightCheckbox />
+    <Instructions />
   </div>;
 };
 
