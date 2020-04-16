@@ -16,10 +16,7 @@ const mapState = (state: RootState) => {
   }
 };
 
-const connector = connect(
-  mapState,
-  null,
-);
+const connector = connect(mapState);
 
 type OptionsProps = ConnectedProps<typeof connector>
 
