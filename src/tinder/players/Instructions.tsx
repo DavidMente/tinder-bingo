@@ -5,6 +5,10 @@ const Instructions: FunctionComponent = () =>
   <div className={'instructions'}>
     <div className={'header'}>Tinder Bingo Instructions</div>
     <div>
+      You need to go to Tinder.com and log in with a Tinder profile in order to play.
+      If the extension does not load right away, refresh the website after logging in.
+    </div>
+    <div>
       Click on the Tinder Bingo extension icon ("TB" - top right) to add players.
     </div>
     <div>
